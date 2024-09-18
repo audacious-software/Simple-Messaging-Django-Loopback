@@ -41,7 +41,7 @@ def process_incoming_request(request): # pylint: disable=too-many-locals, too-ma
         except AttributeError:
             pass
 
-    response['responses'] =  responses
+    response['responses'] = responses
 
     if request.method == 'POST': # pylint: disable=too-many-nested-blocks
         record_responses = True
