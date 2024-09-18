@@ -2,23 +2,15 @@
 
 import importlib
 import json
-import mimetypes
-
-from io import BytesIO
-
-import requests
-import phonenumbers
-
 
 from django.conf import settings
-from django.core import files
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.utils import timezone
 
 from simple_messaging.models import IncomingMessage, IncomingMessageMedia
 
-def process_outgoing_message(outgoing_message, metadata=None): # pylint: disable=too-many-branches
+def process_outgoing_message(outgoing_message, metadata=None): # pylint: disable=unused-argument
     return {
         'loopback': 'Sent at %s via loopback.' % timezone.now().isoformat()
     }
