@@ -1,0 +1,17 @@
+{% load static from static %}
+<script src="{% static 'simple_messaging_loopback/js/console_ui.js' %}"></script>
+<div class="input-group flex-grow-1">
+	<textarea id="loopback_message" placeholder="Loopback User Message" aria-label="Loopback User Message" class="form-control" rows="4"></textarea>
+</div>
+<div class="flex-grow-0 ps-3 pe-5">
+	<div class="input-group" style="width: 100px;">
+		<button class="btn btn-outline-secondary material-icons" id="loopback_upload_button" type="button">backup</button>
+		<input type="file" id="loopback_attachment" class="d-none">
+		<button class="btn btn-outline-secondary material-icons" id="loopback_send_button" type="button" disabled="">send</button>
+	</div>
+	<div class="mt-2">
+		<small>
+			<strong id="loopback_character_count">Length: 0</strong>
+		</small>
+	</div>
+</div>
