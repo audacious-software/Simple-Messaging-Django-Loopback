@@ -65,7 +65,12 @@ def process_incoming_request(request): # pylint: disable=too-many-locals, too-ma
             incoming = IncomingMessage(recipient=destination, sender=sender)
             incoming.receive_date = now
             incoming.message = request.POST.get('LoopbackMessage', '').strip()
-            incoming.transmission_metadata = json.dumps(dict(request.POST), indent=2)
+
+            transmission_metadata = dict(request.POST)
+
+            transmission_metadata['message_channel'] = 'loopback'
+
+            incoming.transmission_metadata = json.dumps(transmission_metadata, indent=2)
 
             incoming.save()
 
