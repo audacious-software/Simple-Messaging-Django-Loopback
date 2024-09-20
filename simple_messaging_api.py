@@ -106,4 +106,23 @@ def process_incoming_request(request): # pylint: disable=too-many-locals, too-ma
     return HttpResponse(json.dumps(response, indent=2), content_type='application/json')
 
 def simple_messaging_custom_console_ui(context): # pylint: disable=invalid-name
-    return render_to_string("simple_messaging/console_loopback.html", context)
+    include_ui = True
+
+    try:
+        from simple_messaging_switchboard.models import Channel, ChannelType
+
+        loopback_type = ChannelType.objects.filter(package_name='simple_messaging_loopback').first()
+
+        if loopback_type is not None:
+            enabled_channel = Channel.objects.filter(channel_type__package_name='simple_messaging_loopback', is_enabled=True).first()
+
+            if enabled_channel is None:
+                include_ui = False
+
+    except ImportError:
+        pass
+
+    if include_ui:
+        return render_to_string("simple_messaging/console_loopback.html", context)
+
+    return None
