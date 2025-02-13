@@ -2,7 +2,6 @@
 
 import importlib
 import json
-import traceback
 
 from django.conf import settings
 from django.http import HttpResponse
@@ -100,12 +99,9 @@ def process_incoming_request(request): # pylint: disable=too-many-locals, too-ma
 
                     response_module.process_incoming_message(incoming)
                 except ImportError:
-                    # pass
-                    print('APP[ImportError]: %s' % app)
-                    traceback.print_exc()
+                    pass
                 except AttributeError:
-                    print('APP[AttributeError]: %s' % app)
-                    traceback.print_exc()
+                    pass
 
     return HttpResponse(json.dumps(response, indent=2), content_type='application/json')
 
