@@ -76,6 +76,13 @@ $(document).ready(function () {
           $('#loopback_attachment').val('')
           $('#loopback_upload_button').html('backup')
 
+          if ($('#incoming_earcon')[0].paused === false) {
+            $('#incoming_earcon')[0].pause()
+            $('#incoming_earcon')[0].currentTime = 0
+          }
+
+          $('#outgoing_earcon')[0].play()
+
           updateCount()
         },
         data: formData,
