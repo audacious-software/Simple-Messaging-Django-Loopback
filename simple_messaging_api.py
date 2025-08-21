@@ -1,4 +1,4 @@
-# pylint: disable=line-too-long, no-member, import-outside-toplevel
+# pylint: disable=line-too-long, no-member, import-outside-toplevel, line-too-long
 
 import importlib
 import json
