@@ -10,7 +10,7 @@ def check_loopback(app_configs, **kwargs): # pylint: disable=unused-argument
     errors = []
 
     if 'simple_messaging_loopback' in settings.INSTALLED_APPS:
-        from simple_messaging_switchboard.models import Channel, ChannelType # pylint: disable=import-outside-toplevel
+        from simple_messaging_switchboard.models import Channel, ChannelType # pylint: disable=import-outside-toplevel, import-error
 
         try:
             loopback_type = ChannelType.objects.filter(package_name='simple_messaging_loopback').first()
