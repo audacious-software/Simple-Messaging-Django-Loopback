@@ -9,7 +9,7 @@ from django.core.checks import Warning, register # pylint: disable=redefined-bui
 def check_loopback(app_configs, **kwargs): # pylint: disable=unused-argument
     errors = []
 
-    if 'simple_messaging_loopback' in settings.INSTALLED_APPS:
+    if 'simple_messaging_switchboard' in settings.INSTALLED_APPS:
         from simple_messaging_switchboard.models import Channel, ChannelType # pylint: disable=import-outside-toplevel, import-error
 
         try:
