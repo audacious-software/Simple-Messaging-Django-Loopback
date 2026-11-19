@@ -127,7 +127,7 @@ def simple_messaging_custom_console_ui(context): # pylint: disable=invalid-name
 
     return None
 
-def create_initial_switchboard_channels():
+def create_initial_switchboard_channels(): # pylint: disable=invalid-name
     from simple_messaging_switchboard.models import Channel, ChannelType
 
     loopback_type = ChannelType.objects.filter(package_name='simple_messaging_loopback').first()
@@ -139,6 +139,3 @@ def create_initial_switchboard_channels():
 
     if loopback_channel is None:
         loopback_channel = Channel.objects.create(name='Loopback', identifier='loopback', channel_type=loopback_type, is_enabled=False)
-
-
-
