@@ -128,7 +128,7 @@ def simple_messaging_custom_console_ui(context): # pylint: disable=invalid-name
     return None
 
 def create_initial_switchboard_channels(): # pylint: disable=invalid-name
-    from simple_messaging_switchboard.models import Channel, ChannelType
+    from simple_messaging_switchboard.models import Channel, ChannelType  #pylint: disable=import-error
 
     loopback_type = ChannelType.objects.filter(package_name='simple_messaging_loopback').first()
 
