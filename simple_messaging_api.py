@@ -126,3 +126,19 @@ def simple_messaging_custom_console_ui(context): # pylint: disable=invalid-name
         return render_to_string("simple_messaging/console_loopback.html", context)
 
     return None
+
+def create_initial_switchboard_channels():
+    from simple_messaging_switchboard.models import Channel, ChannelType
+
+    loopback_type = ChannelType.objects.filter(package_name='simple_messaging_loopback').first()
+
+    if loopback_type is None:
+        loopback_type = ChannelType.objects.create(name='Loopback', package_name='simple_messaging_loopback')
+
+    loopback_channel = Channel.objects.filter(channel_type=loopback_type).first()
+
+    if loopback_channel is None:
+        loopback_channel = Channel.objects.create(name='Loopback', identifier='loopback', channel_type=loopback_type, is_enabled=False)
+
+
+
